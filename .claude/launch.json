@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cortex",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "D:\\cortex site", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}
