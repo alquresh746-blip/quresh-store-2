@@ -11,9 +11,9 @@ const bundles = [
     tag: 'BEST VALUE',
     tagIcon: Zap,
     desc: 'Everything you need to dominate every session.',
-    price: 229.99,
-    oldPrice: 339.99,
-    save: 110,
+    price: 64999,
+    oldPrice: 89999,
+    save: 25000,
     accent: '#ff4700',
     glow: 'rgba(255,71,0,0.15)',
     image: '/bundle1.png',
@@ -23,9 +23,9 @@ const bundles = [
     tag: 'MOST POPULAR',
     tagIcon: Flame,
     desc: 'Game. Stream. Create. All in one setup.',
-    price: 579.99,
-    oldPrice: 729.99,
-    save: 150,
+    price: 159999,
+    oldPrice: 199999,
+    save: 40000,
     accent: '#ff4700',
     glow: 'rgba(255,71,0,0.2)',
     featured: true,
@@ -36,9 +36,9 @@ const bundles = [
     tag: 'TOP TIER',
     tagIcon: Crown,
     desc: 'Maximum performance. Zero compromises.',
-    price: 899.99,
-    oldPrice: 1099.99,
-    save: 200,
+    price: 249999,
+    oldPrice: 299999,
+    save: 50000,
     accent: '#ff4700',
     glow: 'rgba(255,71,0,0.15)',
     image: '/bundle3.png',
@@ -103,7 +103,7 @@ const BuildYourSetup = () => {
               </p>
             </div>
             <Link
-              to="/bundles"
+              to="/shop"
               className="group inline-flex items-center gap-2 text-gray-400 hover:text-[#ff4700] text-sm font-bold transition-colors self-start sm:self-auto"
             >
               View All Bundles
@@ -151,7 +151,7 @@ const BuildYourSetup = () => {
 
                   {/* Save badge */}
                   <div className="absolute top-4 right-4 bg-[#0f0f0f] border border-[#ff4700]/30 text-[#ff4700] text-[10px] font-black px-2 py-0.5 rounded uppercase z-10">
-                    SAVE ${bundle.save}
+                    SAVE Rs.{bundle.save.toLocaleString()}
                   </div>
 
                   <img
@@ -175,10 +175,10 @@ const BuildYourSetup = () => {
                   <div className="flex items-center justify-between mt-auto">
                     <div>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-white font-black text-2xl">${bundle.price}</span>
-                        <span className="text-gray-600 text-xs line-through">${bundle.oldPrice}</span>
+                        <span className="text-white font-black text-2xl">Rs.{bundle.price.toLocaleString()}</span>
+                        <span className="text-gray-600 text-xs line-through">Rs.{bundle.oldPrice.toLocaleString()}</span>
                       </div>
-                      <p className="text-[#ff4700] text-[11px] font-bold mt-0.5">You save ${bundle.save}</p>
+                      <p className="text-[#ff4700] text-[11px] font-bold mt-0.5">You save Rs.{bundle.save.toLocaleString()}</p>
                     </div>
 
                     <button
