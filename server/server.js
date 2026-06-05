@@ -55,13 +55,13 @@ connectDB().then(async () => {
   const adminExists = await User.findOne({ role: 'admin' });
   if (!adminExists) {
     await User.create({
-      name: 'Admin',
-      email: 'admin@alquresh.pk',
-      password: 'Admin@123',
+      name: 'Al-Quresh Admin',
+      email: 'alquresh746@gmail.com',
+      password: '@lquresh123',
       phone: '03001234567',
       role: 'admin',
     });
-    console.log('✅ Admin created: admin@alquresh.pk / Admin@123');
+    console.log('✅ Admin created: alquresh746@gmail.com');
   }
   app.listen(PORT, () => console.log(`Server running on port ${PORT} [${process.env.NODE_ENV}]`));
 });
