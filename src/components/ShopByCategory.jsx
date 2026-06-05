@@ -22,7 +22,7 @@ const categories = [
   {
     name: 'MONITORS',
     slug: 'monitor',
-    img: 'https://images.unsplash.com/photo-1593640408182-31c228b3a997?auto=format&fit=crop&w=200&q=80',
+    img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=200&q=80',
   },
   {
     name: 'PC COMPONENTS',

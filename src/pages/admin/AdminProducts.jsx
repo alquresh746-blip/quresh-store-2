@@ -458,7 +458,7 @@ const AdminProducts = () => {
                   <div className="flex items-center justify-between mb-3">
                     <div>
                       <p className="text-white text-sm font-bold">Discount</p>
-                      <p className="text-gray-500 text-[10px]">Optional — admin ki marzi hai discount dene ki</p>
+                      <p className="text-gray-500 text-[10px]">Optional — apply a discount to reduce the selling price</p>
                     </div>
                     <button
                       type="button"

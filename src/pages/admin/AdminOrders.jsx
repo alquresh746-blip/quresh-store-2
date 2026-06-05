@@ -115,7 +115,7 @@ const AdminOrders = () => {
 
   const handleCreateOrder = async (e) => {
     e.preventDefault();
-    if (!orderItems.length) { addToast('Kam az kam ek product add karo', 'error'); return; }
+    if (!orderItems.length) { addToast('Please add at least one product', 'error'); return; }
     setCreatingOrder(true);
     try {
       await ordersAPI.create({
@@ -342,7 +342,7 @@ const AdminOrders = () => {
                       onChange={e => setCustomerInfo(p => ({ ...p, city: e.target.value }))}
                       className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm focus:outline-none focus:border-[#ff4700]/50 transition-colors"
                     >
-                      <option value="">Shehar select karo</option>
+                      <option value="">Select City</option>
                       {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
@@ -386,7 +386,7 @@ const AdminOrders = () => {
                       type="text"
                       value={productSearch}
                       onChange={e => setProductSearch(e.target.value)}
-                      placeholder="Product search karo..."
+                      placeholder="Search products..."
                       className="w-full bg-[#0d0d0d] border border-white/10 rounded-lg pl-10 pr-4 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#ff4700]/50 transition-colors"
                     />
                     {/* Dropdown Results */}
@@ -422,7 +422,7 @@ const AdminOrders = () => {
                     {orderItems.length === 0 ? (
                       <div className="flex flex-col items-center justify-center h-24 border-2 border-dashed border-white/10 rounded-xl">
                         <ShoppingCart className="w-6 h-6 text-gray-700 mb-1" />
-                        <p className="text-gray-600 text-xs">Upar se product search karo</p>
+                        <p className="text-gray-600 text-xs">Search a product above to add it</p>
                       </div>
                     ) : (
                       orderItems.map(item => (

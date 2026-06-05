@@ -165,7 +165,7 @@ const AdminDashboard = () => {
             <h3 className="text-white font-black text-sm uppercase tracking-widest">Products</h3>
             <span className="text-gray-500 text-xs">{fmt(stats?.totalProducts)} total</span>
           </div>
-          <p className="text-gray-500 text-xs mb-4">Naya product add karo ya existing manage karo.</p>
+          <p className="text-gray-500 text-xs mb-4">Add new products or manage existing inventory.</p>
           <div className="flex gap-3">
             <Link
               to="/admin/products"
@@ -192,7 +192,7 @@ const AdminDashboard = () => {
               </span>
             )}
           </div>
-          <p className="text-gray-500 text-xs mb-4">Phone orders manually enter karo ya status update karo.</p>
+          <p className="text-gray-500 text-xs mb-4">Manually enter phone orders or update order status.</p>
           <div className="flex gap-3">
             <Link
               to="/admin/orders"

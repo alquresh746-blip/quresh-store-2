@@ -29,21 +29,21 @@ const ProtectedRoute = ({ children, requireAdmin = false }) => {
           </div>
           <h1 className="text-white font-black text-3xl uppercase mb-2">Access Denied</h1>
           <p className="text-gray-400 text-sm mb-6">
-            Aap ke paas admin panel access karne ki permission nahi hai.<br />
-            Sirf admin account se login karo.
+            You do not have permission to access the admin panel.<br />
+            Please log in with an admin account.
           </p>
           <div className="flex gap-3 justify-center">
             <Link
               to="/login"
               className="px-6 py-2.5 bg-[#ff4700] text-white text-sm font-bold rounded-lg hover:bg-[#e03e00] transition-colors"
             >
-              Admin se Login Karo
+              Login as Admin
             </Link>
             <Link
               to="/"
               className="px-6 py-2.5 border border-white/10 text-gray-400 text-sm font-bold rounded-lg hover:border-white/30 hover:text-white transition-colors"
             >
-              Home Jao
+              Go to Home
             </Link>
           </div>
         </div>
