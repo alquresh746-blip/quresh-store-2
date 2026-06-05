@@ -30,6 +30,9 @@ const EMPTY_FORM = {
   images: [],
   tags: '',
   specs: [{ key: '', value: '' }],
+  isWholesaleAvailable: false,
+  wholesalePrice: '',
+  minWholesaleQty: '5',
 };
 
 const AdminProducts = () => {
@@ -92,6 +95,9 @@ const AdminProducts = () => {
       images: product.images || [],
       tags: (product.tags || []).join(', '),
       specs: Object.entries(product.specs || {}).map(([key, value]) => ({ key, value })).concat([{ key: '', value: '' }]),
+      isWholesaleAvailable: product.isWholesaleAvailable || false,
+      wholesalePrice: product.wholesalePrice || '',
+      minWholesaleQty: product.minWholesaleQty || '5',
     });
     setUrlInput('');
     setShowModal(true);
@@ -172,6 +178,9 @@ const AdminProducts = () => {
       images: formData.images,
       tags: formData.tags.split(',').map(t => t.trim()).filter(Boolean),
       specs: specsObj,
+      isWholesaleAvailable: formData.isWholesaleAvailable,
+      wholesalePrice: formData.isWholesaleAvailable && formData.wholesalePrice ? Number(formData.wholesalePrice) : null,
+      minWholesaleQty: formData.isWholesaleAvailable ? Number(formData.minWholesaleQty) || 5 : 5,
     };
 
     setSaving(true);
@@ -497,6 +506,60 @@ const AdminProducts = () => {
                           <span className="ml-auto bg-[#ff4700] text-white text-[9px] font-bold px-1.5 py-0.5 rounded">{formData.discountPercent}% OFF</span>
                         </div>
                       )}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Wholesale Pricing */}
+              <div>
+                <h3 className="text-[#ff4700] text-[10px] font-bold uppercase tracking-widest mb-3">Wholesale Pricing</h3>
+                <div className="bg-[#0d0d0d] border border-white/10 rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <p className="text-white text-sm font-bold">Enable Wholesale</p>
+                      <p className="text-gray-500 text-[10px]">Show this product on the Wholesale page with special pricing</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(p => ({ ...p, isWholesaleAvailable: !p.isWholesaleAvailable }))}
+                      className={`w-11 h-6 rounded-full transition-colors relative flex-shrink-0 ${formData.isWholesaleAvailable ? 'bg-[#ff4700]' : 'bg-gray-700'}`}
+                    >
+                      <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${formData.isWholesaleAvailable ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                    </button>
+                  </div>
+
+                  {formData.isWholesaleAvailable && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-white/5">
+                      <div>
+                        <label className="text-gray-400 text-[10px] font-bold uppercase tracking-wider block mb-1.5">Wholesale Price (PKR) *</label>
+                        <input
+                          type="number"
+                          min="0"
+                          required={formData.isWholesaleAvailable}
+                          value={formData.wholesalePrice}
+                          onChange={e => setFormData(p => ({ ...p, wholesalePrice: e.target.value }))}
+                          placeholder="e.g. 3500"
+                          className="w-full bg-[#0f0f0f] border border-[#ff4700]/30 rounded-lg px-4 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#ff4700]/60 transition-colors"
+                        />
+                        {formData.wholesalePrice && formData.originalPrice && (
+                          <p className="text-green-400 text-[10px] mt-1 font-bold">
+                            Save Rs. {(Number(formData.originalPrice) - Number(formData.wholesalePrice)).toLocaleString()} per item
+                          </p>
+                        )}
+                      </div>
+                      <div>
+                        <label className="text-gray-400 text-[10px] font-bold uppercase tracking-wider block mb-1.5">Min. Wholesale Qty</label>
+                        <input
+                          type="number"
+                          min="1"
+                          value={formData.minWholesaleQty}
+                          onChange={e => setFormData(p => ({ ...p, minWholesaleQty: e.target.value }))}
+                          placeholder="5"
+                          className="w-full bg-[#0f0f0f] border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#ff4700]/50 transition-colors"
+                        />
+                        <p className="text-gray-600 text-[10px] mt-1">Default: 5 items</p>
+                      </div>
                     </div>
                   )}
                 </div>

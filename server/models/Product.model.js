@@ -51,6 +51,20 @@ const productSchema = new mongoose.Schema(
       default: {},
     },
     tags: [String],
+    wholesalePrice: {
+      type: Number,
+      default: null,
+      min: [0, 'Wholesale price cannot be negative'],
+    },
+    minWholesaleQty: {
+      type: Number,
+      default: 5,
+      min: [1, 'Minimum wholesale quantity must be at least 1'],
+    },
+    isWholesaleAvailable: {
+      type: Boolean,
+      default: false,
+    },
     isFeatured: {
       type: Boolean,
       default: false,

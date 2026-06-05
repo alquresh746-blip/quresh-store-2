@@ -130,6 +130,17 @@ const Header = () => {
             </Link>
 
             <Link
+              to="/wholesale"
+              className={`px-4 py-1.5 rounded-full transition-all duration-200 ${
+                isActive('/wholesale')
+                  ? 'bg-[#ff4700]/10 text-[#ff4700] border border-[#ff4700]/20'
+                  : 'text-[#ff4700] hover:bg-[#ff4700]/10 border border-[#ff4700]/30 hover:border-[#ff4700]/50'
+              }`}
+            >
+              Wholesale
+            </Link>
+
+            <Link
               to="/about"
               className={`px-4 py-1.5 rounded-full transition-all duration-200 ${
                 isActive('/about')
@@ -268,6 +279,16 @@ const Header = () => {
               {l.label}
             </Link>
           ))}
+          <Link
+            to="/wholesale"
+            className={`block px-4 py-2.5 rounded-xl text-[14px] font-semibold transition-all border ${
+              isActive('/wholesale')
+                ? 'bg-[#ff4700]/10 text-[#ff4700] border-[#ff4700]/30'
+                : 'text-[#ff4700] hover:bg-[#ff4700]/10 border-[#ff4700]/20'
+            }`}
+          >
+            Wholesale
+          </Link>
 
           <div className="h-px bg-white/5 my-2" />
 

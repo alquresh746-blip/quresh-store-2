@@ -14,9 +14,11 @@ export const getProducts = asyncHandler(async (req, res) => {
     featured,
   } = req.query;
 
+  const { wholesale } = req.query;
   const filter = { isActive: true };
   if (category) filter.category = category;
   if (featured === 'true') filter.isFeatured = true;
+  if (wholesale === 'true') filter.isWholesaleAvailable = true;
   if (search) filter.$text = { $search: search };
   if (minPrice || maxPrice) {
     filter.price = {};

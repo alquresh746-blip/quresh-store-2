@@ -50,6 +50,9 @@ export const CartProvider = ({ children }) => {
           price: typeof product.price === 'string'
             ? parseInt(product.price.replace(/,/g, ''))
             : Number(product.price),
+          wholesalePrice: product.wholesalePrice || null,
+          minWholesaleQty: product.minWholesaleQty || 5,
+          isWholesaleAvailable: product.isWholesaleAvailable || false,
           image: product.images?.[0] || product.image,
           quantity,
           specs: product.specs || []
@@ -82,8 +85,20 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  // Get effective price per item (wholesale if eligible)
+  const getEffectivePrice = (item) => {
+    if (
+      item.isWholesaleAvailable &&
+      item.wholesalePrice &&
+      item.quantity >= item.minWholesaleQty
+    ) {
+      return item.wholesalePrice;
+    }
+    return item.price;
+  };
+
   // Calculate totals
-  const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const subtotal = cart.reduce((acc, item) => acc + (getEffectivePrice(item) * item.quantity), 0);
   const deliveryFee = 0; // Free delivery
   const total = subtotal + deliveryFee;
   const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -94,6 +109,7 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateQuantity,
     clearCart,
+    getEffectivePrice,
     subtotal,
     deliveryFee,
     total,

@@ -18,6 +18,7 @@ import OrderSuccess from './pages/OrderSuccess'
 import Deals from './pages/Deals'
 import AboutUs from './pages/AboutUs'
 import Contact from './pages/Contact'
+import Wholesale from './pages/Wholesale'
 import NotFound from './pages/NotFound'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminProducts from './pages/admin/AdminProducts'
@@ -41,6 +42,7 @@ function App() {
               <Route path="deals" element={<Deals />} />
               <Route path="about" element={<AboutUs />} />
               <Route path="contact" element={<Contact />} />
+              <Route path="wholesale" element={<Wholesale />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route 
