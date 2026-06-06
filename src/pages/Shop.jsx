@@ -9,14 +9,11 @@ import { useToast } from '../components/Toast';
 /* ─── Category tabs ─── */
 const TABS = [
   { id: 'all',          name: 'All Products' },
-  { id: 'controller',   name: 'PlayStation'  },
-  { id: 'controller',   name: 'Xbox'         },
-  { id: 'controller',   name: 'Controllers'  },
   { id: 'headset',      name: 'Headsets'     },
   { id: 'keyboard',     name: 'Keyboards'    },
   { id: 'mouse',        name: 'Mouse'        },
   { id: 'mousepad',     name: 'Mousepads'    },
-  { id: 'accessories',  name: 'Networking'   },
+  { id: 'monitor',      name: 'Monitors'     },
   { id: 'accessories',  name: 'Accessories'  },
 ];
 
@@ -233,7 +230,7 @@ const Shop = () => {
               : activeTab.name}
           </h1>
           <p className="text-gray-400 text-sm max-w-lg">
-            Premium gaming gear — Keyboards, Mice, Headsets, Monitors &amp; more. Fast delivery, 2-year warranty.
+            Premium gaming gear — Keyboards, Mice, Headsets, Monitors &amp; more.
           </p>
         </div>
       </div>
